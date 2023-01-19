@@ -1,5 +1,24 @@
 ﻿using ExemploPOO.Models;
 
+
+//Herança Models.Aluno  - Aluno : Pessoa
+Aluno a1 = new Aluno();
+
+a1.Nome = "Pietro";
+a1.Idade = 20;
+a1.Nota
+a1.Email
+
+a1.Apresentar();
+
+
+
+
+
+
+
+
+
 /*
 EX:
 
