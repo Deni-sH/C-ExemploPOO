@@ -1,4 +1,98 @@
 ﻿using ExemploPOO.Models;
+using ExemploPOO.Interfaces;
+
+
+/* Ex:
+
+Qual a função de uma classe selada?
+r: É uma classe que não pode possuir classes filhas, ou seja, ninguém pode derivar dela.
+
+"A classe System.Object é a mãe de todas as classes no C#, e ela tem como objetivo:
+r: Prover serviços de baixo nível para suas classes filhas, como métodos de referências, 
+comparação, finalização e representação de objetos.
+
+Qual a função de uma classe abstrata?
+r: Uma classe que serve apenas como modelo e que não pode ser instanciada;
+
+Uma interface tem como por objetivo:
+r: Estabelescer uma espécie de contrato,que ao ser usado por uma classe, é necessário a implementação de seus métodos previstos na interface.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Ex. Métodos que não tem corpo é obrigatório a implementação, já métodos com corpo não é.
+
+
+namespace ExemploPOO.Interfaces
+{
+    public interface ICalculadora
+    {
+        int Somar(int num1, int num2);
+        int Subtrair(int num1, int num2);
+        int Multiplicar(int num1, int num2);
+       
+            public int Dividir(int num1, int num2)
+        {
+            return num1 / num2;                         <<<---- na interface
+        
+        }
+    }
+}
+
+Na classe >
+
+public class Calculadora : ICalculadora  //OBS: Clica na classe que da erro, ou quer implementar a interface. ou "CRTL + ."
+    {
+                                                                    <---------Método Dividir pôde ser deletado sem dar quebra de código.
+        public int Multiplicar(int num1, int num2)                                  Se tornando opcional a impementação 
+        {
+        return num1 * num2;        }
+
+        public int Subtrair(int num1, int num2)
+        {
+        return num1 - num2;
+        }
+
+        public int Somar(int num1, int num2, int num3)
+        {
+        return num1 + num2 + num3;
+        }
+
+        public int Somar(int num1, int num2)
+        {
+            return num1 + num2;
+        }
+    }
+
+
+
+
+
+/*
+//já implementando interface ele funciona:
+
+ICalculadora calc = new Calculadora();
+
+Console.WriteLine(calc.Multiplicar(3, 9));
+
+
+
+
+/*
+ICalculadora calc = new ICalculadora(); //erro pois interface nao é instanciada
+
+//interface nao é instanciada
 
 
 /* Interfaces: 
@@ -20,11 +114,52 @@ Ambas tem que implementar a interface calculadora -> e implementar os métodos c
 Quando se fala de Classes se diz implementar e não herdar.
 
 
+//OBS: Clica na classe que da erro, ou quer implementar a interface. ou "CRTL + ."
 
+//Calculadora usa a interface da ICalculadora, portanto não herda ela implementa.
 
+namespace ExemploPOO.Interfaces
+{
+    public interface ICalculadora
+    {
+        int Somar(int num1, int num2);
+        int Subtrair(int num1, int num2);
+        int Multiplicar(int num1, int num2);
+        int Dividir(int num1, int num2);
+    }
+}
 
+Calculadora implementa ICalculadora. Ao implementar ele implementa todos os métodos presentes em ICalculadora 
 
+namespace ExemploPOO.Models
+{
+    public class Calculadora : ICalculadora  //OBS: Clica na classe que da erro, ou quer implementar a interface. ou "CRTL + ."
+    {
+        public int Dividir(int num1, int num2)
+        {
+            return num1 / num2;
+        }
 
+        public int Multiplicar(int num1, int num2)
+        {
+        return num1 * num2;        }
+
+        public int Subtrair(int num1, int num2)
+        {
+        return num1 - num2;
+        }
+
+        public int Somar(int num1, int num2, int num3)
+        {
+        return num1 + num2 + num3;
+        }
+
+        public int Somar(int num1, int num2)
+        {
+            return num1 + num2;
+        }
+    }
+}
 
 
 
